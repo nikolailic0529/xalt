@@ -1,0 +1,41 @@
+name: Deploy master to staging servers / AWS Beanstalk
+on:
+  push:
+    branches:
+    - master
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+    steps:
+
+    - name: Checkout source code
+      uses: actions/checkout@v2
+
+    - name: Generate deployment package
+      run: zip -r deploy.zip . -x '*.git*' '*.example' '*.pdf' '*.md' 'spec/**' 'docker-compose.yml' '.rspec' '.rubocop.yml' 'prepare-commit-msg'
+
+    - name: Current timestamp
+      id: timestamp
+      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S-%3NZ')"
+
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v16
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        application_name: xAlt
+        environment_name: xalt-staging1
+        version_label: "${{ steps.timestamp.outputs.date }}"
+        region: us-east-2
+        deployment_package: deploy.zip

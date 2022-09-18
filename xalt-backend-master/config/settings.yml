@@ -1,0 +1,19 @@
+defaults: &defaults
+  mailer:
+    address: smtp.gmail.com
+    port: 587
+    domain: mail.google.com
+    user_name: dummy@example.com
+    password: password
+
+development:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

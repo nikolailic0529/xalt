@@ -1,0 +1,27 @@
+#Rilas Forlders
+log
+tmp
+public/system
+spec
+
+.bundle
+.ruby-version
+.ruby-gemset
+.git
+.github
+.gitignore
+.rubocop.yml
+.rspec
+.elasticbeanstalk
+.platform
+.erdconfig
+.dockerignore
+.env
+
+*.example
+*.md
+*.service
+
+prepare-commit-msg
+database-diagram.png
+xalt-firebase-db.json

@@ -1,0 +1,103 @@
+en:
+  activemodel:
+    errors:
+      models:
+        users/update_current_user:
+          attributes:
+            role:
+              role_cant_be_changed: can't be changed
+            is_onboarding_finished:
+              onboarding_cant_be_changed: can't be changed
+        users/change_password:
+          attributes:
+            old_password:
+              old_password_should_be_valid: should be valid
+            new_password:
+              new_password_and_confirmation_should_match: and password confirmation should be matched
+        users/create:
+          attributes:
+            email:
+              taken: has already been taken
+        members/member_question_answers/create:
+          attributes:
+            member_profile:
+              member_question_answers_already_exists: for this user already exists
+        members/profiles/create:
+          attributes:
+            member_profile:
+              member_profile_already_exists: for this user already exists
+        coaches/profiles/create:
+          attributes:
+            coach_profile:
+              unauthorized_to_change: can't be verified by coach. Only admin can do that
+              coach_profile_already_exists: for this user already exists
+        coaches/profiles/update:
+          attributes:
+            coach_profile:
+              unauthorized_to_change: can't be verified by coach. Only admin can do that
+        coaches/reports/create:
+          attributes:
+            report:
+              report_for_this_meeting_already_exists: for this meeting already exists
+        coaches/reports/update:
+          attributes:
+            answers:
+              must_be_valid: unrating must be 'yes', 'no', 'some of it'
+              must_be_from_one_to_ten: rating must be from one to ten
+        coaches/documents/update:
+          attributes:
+            document:
+              coach_can_not_verify_document: could not be verified by coach
+        coaches/programs/create:
+          attributes:
+            program:
+              program_exercise_should_has_exercise_id_or_link_url: should has exercise id or link url
+              program_type_must_be_valid: type must be homework or session
+              coach_can_not_create_program_in_past_time: can not be created in past time
+              no_subscription: could not be created due to no subscription or not enough sessions available for this member
+        coaches/programs/update:
+          attributes:
+            program:
+              program_exercise_should_has_exercise_id_or_link_url: should has exercise id or link url
+              program_type_must_be_valid: type must be homework or session
+              coach_can_not_create_program_in_past_time: can not be created in past time
+        meetings/create:
+          attributes:
+            meeting:
+              coach_can_not_invite_stranger_member: can not be created with not your member
+              coach_can_not_create_meeting_in_past_time: can not be created in past time
+              meeting_should_be_15_minutes: should be 15 minutes
+              meeting_limit_for_member: could not be created due to session limit of this member
+              no_subscription: could not be created due to no subscription for this member
+              expired_subscription: could not be created due to expired subscription for this member
+        meetings/update:
+          attributes:
+            meeting:
+              member_can_not_change_meeting_date: date can not be changed by member
+              coach_can_not_confirm_meeting: can not be confirmed by coach
+              coach_can_not_change_meeting_to_past: date can not be changed to past date
+              meeting_should_be_15_minutes: should be 15 minutes
+              can_not_be_changed_15_minutes_before: date could not be changed 15 minutes before the meeting
+              meeting_date_can_not_be_changed: date could not be changed, because report already created
+        stripe/coach/create_payout:
+          attributes:
+            current_user:
+              last_payout_failed: last payout was failed
+        stripe/member/init:
+          attributes:
+            current_user:
+              stripe_subscription_empty: stripe subscription must be empty
+              stripe_customer_empty: stripe customer must be empty
+        stripe/member/change_stripe_source:
+          attributes:
+            current_user:
+              stripe_customer_exist: stripe customer must exists
+        stripe/member/create_subscription:
+          attributes:
+            current_user:
+              stripe_customer_exist: stripe customer must exists
+              stripe_subscription_empty: could not create subscription, because old one is not expired
+        stripe/member/cancel_subscription:
+          attributes:
+            current_user:
+              stripe_subscription_exist: stripe subscription must exists

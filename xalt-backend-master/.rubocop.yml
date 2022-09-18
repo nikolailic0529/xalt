@@ -1,0 +1,266 @@
+require:
+- rubocop-rails
+- rubocop-rspec
+# Common configuration.
+AllCops:
+  TargetRubyVersion: 2.7.1
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/data_schema.rb'
+    - 'db/migrate/*.rb'
+    - 'db/data/*.rb'
+    - 'db/seeds.rb'
+    - 'lib/tasks/*'
+    - 'Rakefile'
+    - 'config.ru'
+    - 'vendor/**/*'
+    - 'db/schema.rb'
+    - 'bin/*'
+    - 'app/controllers/base_controller.rb'
+    - 'app/controllers/coach/events_controller.rb'
+#################### Bundler ###############################
+# Gems within groups in the Gemfile should be alphabetically sorted.
+Bundler/OrderedGems:
+  Enabled: false
+
+#################### Layout ###############################
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+# Most readable form.
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+# Indenting the chained dots beneath each other is not supported by this cop,
+# see https://github.com/bbatsov/rubocop/issues/1633
+Layout/MultilineOperationIndentation:
+  Enabled: false
+
+Layout/SpaceInsideBlockBraces:
+  # The space here provides no real gain in readability while consuming
+  # horizontal space that could be used for a better parameter name.
+  # Also {| differentiates better from a hash than { | does.
+  SpaceBeforeBlockParameters: true
+
+# No trailing space differentiates better from the block:
+# foo} means hash, foo } means block.
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+#################### Lint ##################################
+### Warnings
+
+Lint/AssignmentInCondition:
+  AllowSafeAssignment: false
+
+# Suppressing exceptions can be perfectly fine, and be it to avoid to
+# explicitly type nil into the rescue since that's what you want to return,
+# or suppressing LoadError for optional dependencies
+Lint/SuppressedException:
+  Enabled: false
+
+# Shadowing outer local variables with block parameters is often useful
+# to not reinvent a new name for the same thing, it highlights the relation
+# between the outer variable and the parameter. The cases where it's actually
+# confusing are rare, and usually bad for other reasons already, for example
+# because the method is too long.
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+# There are valid cases, for example debugging Cucumber steps,
+# also they'll fail CI anyway
+Lint/Debugger:
+  Enabled: false
+
+#################### Metrics ###############################
+
+Metrics/AbcSize:
+  Max: 31
+  Exclude:
+  - spec/**/*
+  - app/queries/**/*
+  - app/services/scores/*
+
+Metrics/BlockLength:
+  Max: 40
+  Exclude:
+  - spec/**/*
+  - config/routes.rb
+
+# The guiding principle of classes is SRP, SRP can't be accurately measured by LoC
+Metrics/ClassLength:
+  Max: 1500
+
+Metrics/CyclomaticComplexity:
+  Max: 15
+  Exclude:
+  - './app/queries/**/*'
+
+Metrics/PerceivedComplexity:
+  Max: 15
+  Exclude:
+  - './app/factories/**/*'
+  - './app/queries/**/*'
+
+# Increased MaxLineLength up to 160
+# Commonly used screens these days easily fit more than 80 characters.
+Layout/LineLength:
+  Max: 121
+
+# Too short methods lead to extraction of single-use methods, which can make
+# the code easier to read (by naming things), but can also clutter the class
+Metrics/MethodLength:
+  Max: 30
+  Exclude:
+  - './app/factories/**/*'
+
+
+#################### Naming ##############################
+
+# This is just silly. Calling the argument `other` in all cases makes no sense.
+Naming/BinaryOperatorParameterName:
+  Enabled: false
+
+#################### Rails #################################
+
+Rails:
+  Enabled: true
+
+#################### Style ###############################
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+# Style/MethodCallWithArgsParentheses:
+#  Enabled: true
+
+# We do not need to support Ruby 1.9, so this is good to use.
+Style/SymbolArray:
+  Enabled: true
+
+# Mixing the styles looks just silly.
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+# has_key? and has_value? are far more readable than key? and value?
+Style/PreferredHashMethods:
+  Enabled: false
+
+# String#% is by far the least verbose and only object oriented variant.
+Style/FormatString:
+  EnforcedStyle: percent
+
+# CollectionMethods:
+#   Enabled: falseStyle/TrailingCommaInLiteral
+
+# Either allow this style or don't. Marking it as safe with parenthesis
+# is silly. Let's try to live without them for now.
+Style/ParenthesesAroundCondition:
+  AllowSafeAssignment: false
+
+# A specialized exception class will take one or more arguments and construct the message from it.
+# So both variants make sense.
+Style/RaiseArgs:
+  Enabled: false
+
+# Fail is an alias of raise. Avoid aliases, it's more cognitive load for no gain.
+# The argument that fail should be used to abort the program is wrong too,
+# there's Kernel#abort for that.
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+# { ... } for multi-line blocks is okay, follow Weirichs rule instead:
+# https://web.archive.org/web/20140221124509/http://onestepback.org/index.cgi/Tech/Ruby/BraceVsDoEnd.rdoc
+Style/BlockDelimiters:
+  Enabled: false
+
+# do / end blocks should be used for side effects,
+# methods that run a block for side effects and have
+# a useful return value are rare, assign the return
+# value to a local variable for those cases.
+Style/MethodCalledOnDoEndBlock:
+  Enabled: false
+
+# Enforcing the names of variables? To single letter ones? Just no.
+Style/SingleLineBlockParams:
+  Enabled: false
+
+# Check with yard instead.
+Style/Documentation:
+  Enabled: false
+
+# Style preference
+Style/MethodDefParentheses:
+  Enabled: false
+
+# At the moment we do not have places, where we can use has_many through
+# because all join tables do not hold additional information about relation
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+# FIXME: we still don't have common approach here, I would vote for EnforcedStyle: compact,
+#        but afraid to break the code.
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Naming/PredicateName:
+  Exclude:
+  - './app/serializers/**/*'
+
+Rails/ReflectionClassName:
+  Enabled: false
+
+# It fires in wrong places
+Rails/Date:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Description: Checks for nested example groups.
+  Enabled: true
+  Max: 10
+  StyleGuide: http://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/NestedGroups
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 18
+
+RSpec/ExampleLength:
+  Max: 40
+
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+RSpec/BeforeAfterAll:
+  Enabled: false
+
+Lint/PercentStringArray:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Exclude:
+  - './app/commands/**/*'

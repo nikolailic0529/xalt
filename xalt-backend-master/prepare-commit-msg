@@ -1,0 +1,12 @@
+#!/bin/sh
+
+COMMIT_MSG_FILE=$1
+
+BRANCH_NAME=$(git symbolic-ref --short HEAD)
+TICKET=$(echo $BRANCH_NAME | grep -Eo '\w+-\d+')
+
+if [ "$TICKET" = "" ] || [ "$(grep -Eo "\[$TICKET\]" $COMMIT_MSG_FILE)" != "" ]; then
+  exit 0
+fi
+
+sed -i .bak -e "1s/^/[$(echo $TICKET | tr 'a-z' 'A-Z')] /" $COMMIT_MSG_FILE

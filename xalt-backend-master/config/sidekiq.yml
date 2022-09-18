@@ -1,0 +1,16 @@
+:concurrency: 10
+:pidfile: <%= ENV.fetch('SIDEKIQ_PIDFILE', 'tmp/pids/sidekiq.pid') %>
+:timeout: 90
+:queues:
+  - default
+  - mailers
+  - chat_messages
+  - upload_videos
+  - clear_video_bucket
+  - meetings
+  - create_notification
+  - prepare_notification
+  - payouts
+:schedule:
+  CreatePayoutsJob:
+    cron: '0 * * * *'

@@ -1,0 +1,486 @@
+// Temp global import of CSS for landing page
+.container-landing {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.container-landing {
+  .item {
+    margin-bottom: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .welcomeRowBackground {
+    background: linear-gradient(90deg, #e9ecf2 7.99%, #ffffff 99.06%);
+    width: 100%;
+  }
+
+  .welcomeRow {
+    width: 100%;
+    height: 100vh;
+    max-height: 750px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-basis: 100%;
+    max-width: 1248px;
+    margin: 0 auto;
+    word-break: keep-all;
+  }
+
+  .welcomeRow #welcomeImage {
+    min-width: 367px;
+    height: 100vh;
+    max-height: 750px;
+    background: url('../images/Daco_3704977.svg');
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    flex: 1;
+  }
+
+  .welcomeRow .textArea {
+    flex: 2;
+    width: 100%;
+    margin: 100px 24px 12px 24px;
+  }
+
+  .createAccountAs {
+    padding: 24px;
+    height: max-content;
+    width: 100%;
+    background: #fff;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    letter-spacing: 0.0025em;
+    color: #39393c;
+    display: flex;
+  }
+
+  .experienceAsMember {
+    width: 100%;
+    padding: 24px;
+    background: rgb(240, 240, 240);
+  }
+
+  .cards {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .centerHeaderContainer {
+    text-align: center;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-weight: bolder;
+    font-size: 64px;
+    line-height: 76px;
+    letter-spacing: 0.5px;
+    color: #39393c;
+  }
+
+  h2 {
+    font-size: 48px;
+    line-height: 60px;
+    font-weight: 700;
+    color: #39393c;
+  }
+
+  h3 {
+    font-size: 32px;
+    line-height: 46px;
+    font-weight: 400;
+    color: #39393c;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    flex: 0 0 250px;
+  }
+
+  .cards {
+    min-height: 150px;
+  }
+  .card {
+    margin: 12px;
+    background: #fff;
+    border-radius: 7px;
+    padding: 0 0 50px 0;
+    border-radius: 7px 7px 0 0;
+    filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.12));
+
+    &.disable {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+
+  .card > header {
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .card-title {
+    font-size: 30px;
+    padding-bottom: 20px;
+    font-weight: bold;
+    margin-bottom: 25px !important;
+  }
+
+  .card > ul {
+    list-style: none;
+    padding: 0;
+  }
+  .card > ul li {
+    height: 20px;
+    width: 90%;
+    margin: 10px auto;
+  }
+  .card button {
+    width: 75%;
+    height: 40px;
+    border: 1px solid #ef5da8;
+    margin-left: 12px;
+    border-radius: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: #ef5da8;
+    background-color: #fff;
+  }
+
+  .member-background {
+    background: linear-gradient(
+        180deg,
+        rgba(230, 68, 125, 0.32) 0%,
+        rgba(255, 171, 61, 0.32) 100%
+      ),
+      url('../images/young-woman-aercising-gym-with-dumbbells 1.png');
+  }
+
+  .coach-background {
+    background: linear-gradient(
+        180deg,
+        rgba(230, 68, 125, 0.32) 0%,
+        rgba(255, 171, 61, 0.32) 100%
+      ),
+      url('../images/partners-in-private-and-professional-life 1.png');
+  }
+
+  .broker-background {
+    background: linear-gradient(
+        180deg,
+        rgba(230, 68, 125, 0.32) 0%,
+        rgba(255, 171, 61, 0.32) 100%
+      ),
+      url('../images/moment-discussion 1.png');
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+  }
+
+  .button-row {
+    background: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    height: 105px;
+    margin: 12px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 18px;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .container-row {
+    background-color: #fff;
+    height: 100px;
+    font-weight: 700;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    margin: 12px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 12px;
+    font-size: 24px;
+  }
+
+  .memberBenefitsBackground {
+    background: #fff;
+    padding: 24px;
+    width: 100%;
+  }
+
+  .memberBenefitsRow {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-basis: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding-bottom: 24px;
+  }
+
+  #memberBenefitsImage {
+    min-width: 367px;
+    min-height: 400px;
+    max-height: 750px;
+    background: url('../images/member_benefits_image.png');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    flex: 1;
+  }
+
+  .memberBenefitsRow .textArea {
+    flex: 2;
+    width: 100%;
+    margin: 100px 24px 12px 24px;
+  }
+
+  .memberBenefitsImageIcons {
+    width: 73px;
+    height: 73px;
+    margin: 12px auto;
+  }
+
+  .benefit-row p {
+    text-align: center;
+    width: 100%;
+  }
+
+  .benefit-row {
+    background: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    height: 200px;
+    margin: 12px;
+    width: 100%;
+    min-width: 125px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .startNow {
+    margin: 0;
+    width: 100%;
+    min-height: 463px;
+    background: linear-gradient(
+        180deg,
+        rgba(230, 68, 125, 0.32) 0%,
+        rgba(255, 171, 61, 0.32) 100%
+      ),
+      url('../images/group-women-running-park 1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    h2,
+    h3 {
+      color: #fff;
+    }
+  }
+
+  .footer {
+    padding: 16px 12px 16px;
+    width: 100%;
+  }
+
+  .button-link {
+    box-shadow: 0px 1px 2px rgba(51, 51, 51, 0.12);
+    border-radius: 10px;
+    min-width: 117px;
+    height: 48px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    display: inline-block;
+    justify-items: center;
+    margin: 12px;
+    padding: 0 24px;
+  }
+
+  .primary-button {
+    background-color: #e6447d;
+    color: #fff;
+    border-style: none;
+  }
+
+  .secondary-button {
+    color: #e6447d;
+    background-color: #fff;
+    border-style: solid;
+    border-color: #e6447d;
+
+    &:disabled {
+      border-color: #9e9e9e;
+      color: #9e9e9e;
+    }
+  }
+
+  .startNow {
+    a:disabled,
+    a[disabled] {
+      pointer-events: none;
+      opacity: 0.9;
+
+      .secondary-button {
+        border-color: #9e9e9e;
+        color: #9e9e9e;
+      }
+    }
+  }
+
+  .no-border-button {
+    border-style: none;
+  }
+
+  @media screen and (max-width: 700px) {
+    .welcomeRow #welcomeImage {
+      min-width: 367px;
+      height: 400px;
+      background-position: center;
+    }
+
+    .welcomeRow .textArea {
+      text-align: center;
+      margin: 12px;
+    }
+
+    .row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      flex: 1;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 100%;
+      flex: 1;
+    }
+
+    .overall-msg {
+      display: none;
+    }
+  }
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: flex-end;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.footer-nav {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  @media screen and (max-width: 768px) {
+    margin: 0 0 16px;
+  }
+
+  @media screen and (min-width: 769px) {
+    margin: 0;
+  }
+}
+
+.footer-link {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  color: #39393c;
+  opacity: 1;
+  transition: 0.2s opacity ease-in-out 0s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 0 12px;
+  }
+
+  @media screen and (min-width: 769px) {
+    margin: 0 20px;
+  }
+}
+
+.footer-copyright {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  color: #39393c;
+
+  @media screen and (max-width: 768px) {
+    margin: 0;
+  }
+
+  @media screen and (min-width: 769px) {
+    margin: 0 0 0 20px;
+  }
+}

@@ -1,0 +1,42 @@
+name: s3-depl-staging
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Define variables
+        run: |
+          echo "API_URL='https://api-staging1.xalt.ai'" > .env
+          echo "WS_URL=wss://api-staging1.xalt.ai" >> .env
+          echo "VIMEO_ACCESS_TOKEN=8f774fc0c6861fe3e5a706247fb0cf7b" >> .env
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+      - name: Yarn install
+        run: |
+          cat .env
+          yarn install
+      - name: Build
+        run: yarn build
+      - name: Deploy app build to S3 bucket
+        run: |
+          aws s3 sync ./dist/ s3://xalt-fe --delete
+          aws cloudfront create-invalidation --distribution-id E1RX406IG5YMAH --paths "/*"
